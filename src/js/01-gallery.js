@@ -27,21 +27,20 @@ const createGalleryMarkup = items => {
 
 galleryList.innerHTML = createGalleryMarkup(galleryItems);
 
-const handleImageClick = event => {
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+
+function handleImageClick(event) {
   event.preventDefault();
 
   if (event.target.nodeName !== 'IMG') {
     return;
   }
 
-  const originalImage = event.target.dataset.source;
-  const description = event.target.alt;
-
-  const instance = new SimpleLightbox()(`
-    <img src="${originalImage}" alt="${description}">
-  `);
-
-  instance.show();
-};
+  const instance = lightbox.open(event.target.getAttribute('data-source'));
+}
+instance.show();
 
 galleryList.addEventListener('click', handleImageClick);
