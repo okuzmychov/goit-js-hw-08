@@ -1,4 +1,5 @@
 import Player from '@vimeo/player';
+import throttle from 'lodash.throttle';
 const frame = document.querySelector('iframe');
 const player = new Player(frame);
 
@@ -22,3 +23,8 @@ player.setCurrentTime(LS).then(function(seconds) {
             break;
     }
 });
+
+// feedbackForm.addEventListener('input', throttle(handlerInput, 1000));
+// function handlerInput(evt) {
+//     console.log(evt.Targett)
+// }
