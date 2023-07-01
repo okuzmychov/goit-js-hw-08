@@ -31,16 +31,3 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
-
-function handleImageClick(event) {
-  event.preventDefault();
-
-  if (event.target.nodeName !== 'IMG') {
-    return;
-  }
-
-  const instance = lightbox.open(event.target.getAttribute('data-source'));
-}
-instance.show();
-
-galleryList.addEventListener('click', handleImageClick);
